@@ -1,0 +1,67 @@
+
+# Публичный сервер log-monitor.rg.ru
+:8080 {
+    # Кросдоменность
+    header * {
+        Access-Control-Allow-Origin *
+        Access-Control-Allow-Headers *
+    }
+
+    # # Аутентификация --------------------------------------------------------------
+    # # Матчер @auth включает все маршруты за исключением portainer и www
+    # @auth {
+    #     not path /portainer/*
+    #     not path /www*
+    #     not path /elasticsearch/*
+    # }
+
+    # # Базовая аутентификация распространяется на все маршруты определенные в матчере @auth
+    # basicauth @auth {
+    #     admin JDJhJDEwJDhPZzNWMkZoeXlxVHgyZzNmcmY4ZC5GM1prSktvODlLN05jOUozamNvbGR3YnhvWnRubjhl
+    # }
+    
+    @elasticsearch_get {
+        method GET OPTIONS
+        path /elasticsearch/* 
+    }
+
+    @elasticsearch_sql {
+        method POST OPTIONS
+        path /elasticsearch/_sql* 
+    }
+    
+    # маршрут elasticsearch без аутентификации
+    route @elasticsearch_get {
+        uri strip_prefix /elasticsearch
+        reverse_proxy  es01:9200 
+    }
+
+    # маршрут elasticsearch без аутентификации
+    route @elasticsearch_sql {
+        uri strip_prefix /elasticsearch
+        reverse_proxy  es01:9200 
+    }
+
+    # маршрут статического сайта
+    route /www/* {
+        file_server * browse {
+            root /
+        }    
+    }
+
+
+
+    # маршрут cerebro, контроль кластера elasticsearch с базовой аутентификацией
+    route /cerebro/* {
+        uri strip_prefix /cerebro
+        reverse_proxy cerebro01:9000 
+    }
+
+
+
+    # Kibana. Корневой маршрут с базовой аутентификацией
+    route * {
+        reverse_proxy kibana01:5601     
+    }    
+}
+

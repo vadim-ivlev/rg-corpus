@@ -1,0 +1,8 @@
+*DS_Store
+.idea
+.vscode/settings.json
+logrus.log
+tutorial
+notebooks/.ipynb_*
+elastic-data
+
