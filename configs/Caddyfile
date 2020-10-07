@@ -10,9 +10,9 @@
     # Аутентификация --------------------------------------------------------------
     # Матчер @auth включает все маршруты за исключением portainer и www
     @auth {
-        not path /portainer/*
         not path /www*
-        not path /elasticsearch/*
+        not path /elasticsearch_get/*
+        not path /elasticsearch/_sql*
     }
 
     # Базовая аутентификация распространяется на все маршруты определенные в матчере @auth
@@ -20,9 +20,14 @@
         admin JDJhJDEwJDhPZzNWMkZoeXlxVHgyZzNmcmY4ZC5GM1prSktvODlLN05jOUozamNvbGR3YnhvWnRubjhl
     }
     
+    @elasticsearch {
+        #method GET POST OPTIONS
+        path /elasticsearch/* 
+    }
+
     @elasticsearch_get {
         method GET OPTIONS
-        path /elasticsearch/* 
+        path /elasticsearch_get/* 
     }
 
     @elasticsearch_sql {
@@ -30,9 +35,15 @@
         path /elasticsearch/_sql* 
     }
     
+    # маршрут elasticsearch c аутентификацией
+    route @elasticsearch {
+        uri strip_prefix /elasticsearch
+        reverse_proxy  es01:9200 
+    }
+
     # маршрут elasticsearch без аутентификации
     route @elasticsearch_get {
-        uri strip_prefix /elasticsearch
+        uri strip_prefix /elasticsearch_get
         reverse_proxy  es01:9200 
     }
 

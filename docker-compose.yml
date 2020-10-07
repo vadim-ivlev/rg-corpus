@@ -19,17 +19,17 @@ services:
       # - cluster.initial_master_nodes=es01,es02,es03
       # - cluster.initial_master_nodes=es01
 
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      #- bootstrap.memory_lock=true
+      #- "ES_JAVA_OPTS=-Xms512m -Xmx512m"
 
       # добавить это к каждой службе эластик если свободного места на диске < 10%
 
       # в противном случае шарды не будут двигаться
       # - cluster.routing.allocation.disk.threshold_enabled=false
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
+    #ulimits:
+    #  memlock:
+    #    soft: -1
+    #    hard: -1
     # # ports:
     #   - 9200:9200
     volumes:
