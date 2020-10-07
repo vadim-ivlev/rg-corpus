@@ -7,18 +7,18 @@
         Access-Control-Allow-Headers *
     }
 
-    # # Аутентификация --------------------------------------------------------------
-    # # Матчер @auth включает все маршруты за исключением portainer и www
-    # @auth {
-    #     not path /portainer/*
-    #     not path /www*
-    #     not path /elasticsearch/*
-    # }
+    # Аутентификация --------------------------------------------------------------
+    # Матчер @auth включает все маршруты за исключением portainer и www
+    @auth {
+        not path /portainer/*
+        not path /www*
+        not path /elasticsearch/*
+    }
 
-    # # Базовая аутентификация распространяется на все маршруты определенные в матчере @auth
-    # basicauth @auth {
-    #     admin JDJhJDEwJDhPZzNWMkZoeXlxVHgyZzNmcmY4ZC5GM1prSktvODlLN05jOUozamNvbGR3YnhvWnRubjhl
-    # }
+    # Базовая аутентификация распространяется на все маршруты определенные в матчере @auth
+    basicauth @auth {
+        admin JDJhJDEwJDhPZzNWMkZoeXlxVHgyZzNmcmY4ZC5GM1prSktvODlLN05jOUozamNvbGR3YnhvWnRubjhl
+    }
     
     @elasticsearch_get {
         method GET OPTIONS

@@ -100,6 +100,6 @@ https://docs.google.com/document/d/1Q1ExyY36btdnTNe5co_pB4UdWNk41gY3rP1geg1LJBo/
 
 Перезапуск Caddy и перестройка контейнера если что то изменилость в docker-compose 
 ```
-dc restart log-monitor-caddy  
-dc up -d --build log-monitor-caddy     
+dc restart rg-corpus-caddy  
+dc up -d --build rg-corpus-caddy     
 ```
