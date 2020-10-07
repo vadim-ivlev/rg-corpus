@@ -7,7 +7,8 @@ services:
   # Одиночный elasticsearch
   # E L A S T I C S E A R C H   -----------------------------------------------------------
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    #image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    image: elasticsearch:7.7.0
     container_name: es01
     restart: unless-stopped
     environment:
@@ -18,17 +19,17 @@ services:
       # - cluster.initial_master_nodes=es01,es02,es03
       # - cluster.initial_master_nodes=es01
 
-      # - bootstrap.memory_lock=true
-      # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
 
       # добавить это к каждой службе эластик если свободного места на диске < 10%
 
       # в противном случае шарды не будут двигаться
       # - cluster.routing.allocation.disk.threshold_enabled=false
-    # ulimits:
-    #   memlock:
-    #     soft: -1
-    #     hard: -1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     # # ports:
     #   - 9200:9200
     volumes:
@@ -152,7 +153,7 @@ services:
 #   notebook_data:
 
 # outer network to communicate with other services 
-# networks:
-#   default:
-#     external:
-#       name: auth_proxy_network
+networks:
+  default:
+    external:
+      name: auth_proxy_network
