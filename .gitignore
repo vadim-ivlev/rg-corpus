@@ -4,5 +4,6 @@
 logrus.log
 tutorial
 notebooks/.ipynb_*
-elastic-data
+elastic-data/*
+!elastic-data/dummy.txt
 
