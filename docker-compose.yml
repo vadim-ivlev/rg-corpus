@@ -19,8 +19,8 @@ services:
       # - cluster.initial_master_nodes=es01,es02,es03
       # - cluster.initial_master_nodes=es01
 
-      #- bootstrap.memory_lock=true
-      #- "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms16g -Xmx16g"
 
       # добавить это к каждой службе эластик если свободного места на диске < 10%
 
@@ -30,10 +30,11 @@ services:
     #  memlock:
     #    soft: -1
     #    hard: -1
-    # # ports:
+    # ports:
     #   - 9200:9200
     volumes:
-      - ./elastic-data:/usr/share/elasticsearch/data
+      # - ./elastic-data:/usr/share/elasticsearch/data
+      - data-es01:/usr/share/elasticsearch/data
   
   
 
@@ -65,7 +66,7 @@ services:
   #   # ports:
   #   #   - 9200:9200
   #   volumes:
-  #     - data01:/usr/share/elasticsearch/data
+  #     - - :/usr/share/elasticsearch/data
 
   # es02:
   #   image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
@@ -144,9 +145,9 @@ services:
 
 
 
-# volumes for Elasticsearch data and Portainer
-# volumes:
-#   data01:
+# volumes for Elasticsearch data and Portainerse
+volumes:
+  data-es01:
 #   data02:
 #   data03:
 #   portainer_data:

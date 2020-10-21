@@ -6,4 +6,5 @@ tutorial
 notebooks/.ipynb_*
 elastic-data/*
 !elastic-data/dummy.txt
+.ipynb_checkpoints
 
