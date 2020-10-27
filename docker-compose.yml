@@ -34,7 +34,7 @@ services:
     #   - 9200:9200
     volumes:
       # - ./elastic-data:/usr/share/elasticsearch/data
-      - data-es01:/usr/share/elasticsearch/data
+      - rg-corpus-es01:/usr/share/elasticsearch/data
   
   
 
@@ -147,7 +147,8 @@ services:
 
 # volumes for Elasticsearch data and Portainerse
 volumes:
-  data-es01:
+  rg-corpus-es01:
+    external: true
 #   data02:
 #   data03:
 #   portainer_data:
