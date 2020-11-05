@@ -63,10 +63,10 @@
 
 
     # маршрут cerebro, контроль кластера elasticsearch с базовой аутентификацией
-    route /cerebro/* {
-        uri strip_prefix /cerebro
-        reverse_proxy rg-corpus-cerebro:9000 
-    }
+    # route /cerebro/* {
+    #     uri strip_prefix /cerebro
+    #     reverse_proxy rg-corpus-cerebro:9000 
+    # }
 
 
 

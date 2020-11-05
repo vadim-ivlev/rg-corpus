@@ -8,5 +8,5 @@ echo
 # echo "* Cerebro (visualize cluster) http://localhost:9000"
 echo
 echo "* Caddy (proxy to Kibana)  http://localhost:9094"
-echo "* Caddy (proxy to Cerebro) http://localhost:9094/cerebro/#/connect"
+# echo "* Caddy (proxy to Cerebro) http://localhost:9094/cerebro/#/connect"
 echo "* Caddy (proxy to www)     http://localhost:9094/www"

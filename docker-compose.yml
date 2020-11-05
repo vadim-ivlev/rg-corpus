@@ -118,16 +118,16 @@ services:
       ELASTICSEARCH_HOSTS: '["http://es01:9200"]'
       # ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'
   
-  # Cerebro. Визуализация кластера elasticsearch
-  rg-corpus-cerebro:
-    image: lmenezes/cerebro
-    container_name: rg-corpus-cerebro
-    restart: unless-stopped
-    # left to try through auth-proxy
-    # ports:
-    #   - 9000:9000
-    environment:
-      CEREBRO_PORT: 9000
+  # # Cerebro. Визуализация кластера elasticsearch
+  # rg-corpus-cerebro:
+  #   image: lmenezes/cerebro
+  #   container_name: rg-corpus-cerebro
+  #   restart: unless-stopped
+  #   # left to try through auth-proxy
+  #   # ports:
+  #   #   - 9000:9000
+  #   environment:
+  #     CEREBRO_PORT: 9000
     
 
   # Caddy HTTP сервер, добавлен для базовой аутентификации к Кибане
