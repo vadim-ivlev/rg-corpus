@@ -1,7 +1,17 @@
 
 RG-CORPUS
 ========
-корпус текстов РГ
+**Корпус текстов РГ** в рамках построения рекомендательной системы RGRU.
+
+Индексы Эластик представляют собой синхронизированные копии таблиц Постгрес с опозданием 5 мин.
+Предназначены для полнотекстового поиска статей с использованием различных алгоритмов.
+
+
+<a href="http://dockertest.rgwork.ru:9555">GUI доступа к API поиска</a>
+
+<a target="_blank" href="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=RG%20NLP%20project.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1yflDpag5TSUrKPRsHgFzR2sBhjBY_7tz%26export%3Ddownload">Общая схема проектов</a>
+
+
 
 ## Настройки сервера
 
@@ -75,36 +85,6 @@ https://dzone.com/articles/23-useful-elasticsearch-example-queries
 
 
 https://docs.google.com/document/d/1Q1ExyY36btdnTNe5co_pB4UdWNk41gY3rP1geg1LJBo/edit?usp=sharing
-
-
-
-<br><br><br>
-
---------------------------
-
-Порядок работы
-==============
-
-1. Изменить код
-2. Запустить докер
-3. Проверить
-4. Запушить
-5. Отдеплоить
-   
-
-Команды
--------
-В директории `sh/` находятся следующие команды для облегчения работы.
-
-
-|   |   |
-|---|---|
-Подъем                                      | `sh/up.sh`
-Приостановка контейнера                     | `sh/stop.sh`
-Старт приостановленного контейнера          | `sh/start.sh`
-Полный останов контейнера                   | `sh/down.sh`
-Подготовка директории deploy                | `sh/build-deploy-directory.sh`
-Деплой                                      | `sh/deploy.sh`
 
 
 
