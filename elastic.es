@@ -101,6 +101,10 @@ PUT /elasticsearch/articles_date
                 "type": "date",
                 "format": "yyyy-MM-dd HH:mm:ss"            
             },
+            "index_date": {
+                "type": "date",
+                "format": "yyyy-MM-dd HH:mm:ss"            
+            },
             "elastic_status": {
                 "type": "text",
                 "fields": {
