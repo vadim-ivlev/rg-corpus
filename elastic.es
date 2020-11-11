@@ -9,9 +9,9 @@ GET /elasticsearch/_cat/indices?format=txt
 
 
 // SQL query
-POST /elasticsearch/_sql?format=json
+POST /elasticsearch/_sql/translate/?format=json
 {
-    "query": "SELECT obj_id FROM articles LIMIT 12 ",
+    "query": "SELECT obj_id FROM articles WHERE date_modified > '2020-11-01 00:00:00' LIMIT 12 ",
     "fetch_size": 3
 }
 
@@ -315,8 +315,6 @@ POST /elasticsearch/_reindex
     }
 }
 
-
-
 // get alias
 GET /elasticsearch/articles_date/_alias
 
@@ -326,3 +324,29 @@ PUT /elasticsearch/articles_date/_alias/articles_alias
 // delete alias
 DELETE /elasticsearch/articles_date/_alias/articles_alias
 
+// Histogramms
+                // "include_lower": true,
+                // "include_upper": true,
+                // "time_zone": "Z",
+                // "boost": 1
+                // "to": null
+ 
+POST /elasticsearch/articles/_search
+{
+    "size": 0,
+    "query": {
+        "range": {
+            "date_modified": {
+                "from": "now-1d/h"
+           }
+        }
+    },
+    "aggs": {
+        "articles_over_time": {
+            "date_histogram": {
+                "field": "date_modified",
+                "calendar_interval": "hour"
+            }
+        }
+    }
+}
