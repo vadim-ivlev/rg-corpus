@@ -57,20 +57,20 @@ PUT /elasticsearch/my-index-000001/_settings
 
 
 // get index settings
-GET /elasticsearch/articles_date/_settings
+GET /elasticsearch/articles/_settings
 
 // get mapping of articles
-GET /elasticsearch/articles_date/_mapping
+GET /elasticsearch/articles/_mapping
 
 // get mapping of a fields
-GET /elasticsearch/articles_date/_mapping/field/date_modified,release_date
+GET /elasticsearch/articles/_mapping/field/index_date,date_modified,release_date
 
 
 // Delete index
 DELETE /elasticsearch/articles_date
 
 // Create index
-PUT /elasticsearch/articles_date
+PUT /elasticsearch/articles
 {
     "settings": {
         "index": {
