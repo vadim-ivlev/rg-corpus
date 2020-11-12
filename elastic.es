@@ -338,7 +338,7 @@ POST /elasticsearch/articles/_search
         "range": {
             "date_modified": {
                 "from": "now-1d/h"
-           }
+            }
         }
     },
     "aggs": {
@@ -350,3 +350,17 @@ POST /elasticsearch/articles/_search
         }
     }
 }
+
+//   SELECT HISTOGRAM("@timestamp", INTERVAL 30 SECOND) as interval, 
+//   count(*) as count
+//   FROM "log-generator-logrus*"
+//   GROUP by interval
+//   ORDER BY interval DESC
+//   LIMIT 30
+
+
+POST /elasticsearch/_sql?format=json
+{
+    "query": "SELECT HISTOGRAM(date_modified, INTERVAL 1 HOUR) as interval, count(*) as count FROM articles GROUP by interval ORDER BY interval DESC LIMIT 24 "    
+}
+
