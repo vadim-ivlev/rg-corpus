@@ -15,13 +15,23 @@ POST /elasticsearch/_sql/translate/?format=json
     "fetch_size": 3
 }
 
+POST /elasticsearch/_sql/translate/?format=txt
+{
+    "query": "SELECT obj_id, date_modified FROM articles ORDER BY date_modified DESC LIMIT 12 ",
+    "fetch_size": 3
+}
+
+
+
+
 // simple query
 GET /elasticsearch/articles/_search
 {
     "size": 3,
     "_source": [
         "obj_id",
-        "lemmatized_text"
+        "date_modified",
+        "url"
     ]
 }
 
